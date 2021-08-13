@@ -17,3 +17,36 @@
 - метод __iter__
 - метод __next__
 """
+
+
+class Counter:
+    current: int
+
+    def __init__(self, start: int = 0):
+        self.current = start
+
+    def increase(self):
+        add_number = self.current
+        self.current += 1
+        return add_number
+
+    def decrease(self):
+        dec_number = self.current
+        self.current -= 1
+        return dec_number
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current > 10:
+            raise StopIteration
+        current = self.current
+        self.increase()
+        return current
+
+
+current = Counter()
+
+for item in current:
+    print(item)
